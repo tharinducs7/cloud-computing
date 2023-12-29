@@ -1,5 +1,5 @@
 ---
-  name: Build and Deploy NextJS App to S3 and CloudFront
+  name: Build and Deploy Static React App to S3 and CloudFront
   on:
     push:
       branches: [main]
@@ -16,7 +16,7 @@
         DIST: build
         AWS_REGION: us-east-1
         S3_BUCKET: cca-static-web-msc-23-dec
-        CLOUDFRONT_DISTRIBUTION_ID: E1Z6JBHD4UYZ7C
+        CLOUDFRONT_DISTRIBUTION_ID: E26YKO291IAE3K
   
       steps:
         - name: Checkout
@@ -25,7 +25,7 @@
         - name: Configure AWS credentials from AWS account
           uses: aws-actions/configure-aws-credentials@v2
           with:
-            role-to-assume: arn:aws:iam::132930376828:role/oidc-aws-github
+            role-to-assume: arn:aws:iam::718878477491:role/oidc-aws-github
             aws-region: ${{ env.AWS_REGION }}
   
         - name: Install Dependencies
