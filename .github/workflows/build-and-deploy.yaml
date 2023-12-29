@@ -17,6 +17,9 @@
         AWS_REGION: us-east-1
         S3_BUCKET: cca-static-web-msc-23-dec
         CLOUDFRONT_DISTRIBUTION_ID: E26YKO291IAE3K
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   
       steps:
         - name: Checkout
