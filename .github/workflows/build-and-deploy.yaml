@@ -26,12 +26,10 @@
           uses: actions/checkout@v3
   
         - name: Configure AWS credentials from AWS account
-          uses: aws-actions/configure-aws-credentials@v4
+          uses: aws-actions/configure-aws-credentials@v2
           with:
-            role-to-assume: arn:aws:iam::718878477491:role/aws-github-openid
+            role-to-assume: arn:aws:iam::718878477491:role/github-aws-role
             aws-region: ${{ env.AWS_REGION }}
-            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   
         - name: Install Dependencies
           run: |
