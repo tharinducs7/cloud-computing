@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React CCA
+          Static website host in AWS
         </a>
       </header>
     </div>
