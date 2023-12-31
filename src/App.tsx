@@ -17,6 +17,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Static website host in AWS
+          Hello Everyone
         </a>
       </header>
     </div>
