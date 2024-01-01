@@ -4,8 +4,7 @@ import {
   Card,
   CardLeft,
   CardRight,
-  Stack,
-  BtnGroup,
+  Stack
 } from "./ProjectCardElements";
 function ProjectCard() {
   return (
