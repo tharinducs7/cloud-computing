@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 import React from "react";
 import { stackList } from "../../data/ProjectData";
 import {
@@ -25,6 +26,9 @@ function About() {
           <div className="AboutBio tagline2">
             As part of our coursework, we are excited to present a project that demonstrates how to host a static React app on an S3 bucket, utilizing Amazon CloudFront for content delivery, and orchestrating the entire process with Terraform. This project serves as a practical illustration of cloud infrastructure as code, automation, and continuous integration and deployment (CI/CD) practices.
           </div>
+          <div className="AboutBio">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/BC2oK_S-3GI" frameborder="0" allowfullscreen></iframe>
+          </div>
           <Technologies>
             {stackList.map((stack, index) => (
               <Tech key={index} className="tech">
@@ -46,6 +50,8 @@ function About() {
               <strong >Coursework:</strong> <br></br> <span>This project is a part of the MSc program in Cloud Computing Application, specifically Coursework 1 Part B </span>.<br></br><br></br>
               <strong>Group No. 7:</strong> <br></br> As Group No. 7, we collaboratively explore and implement cloud computing concepts to address the requirements of the coursework.
           </p>
+
+         
         </div>
       </div>
     </ContactWrapper>
