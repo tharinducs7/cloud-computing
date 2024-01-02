@@ -9,26 +9,47 @@ resource "aws_s3_bucket" "s3_bucket" {
 # -----------------------------------------------------
 # S3 Bucket Policy
 # -----------------------------------------------------
+# data "aws_iam_policy_document" "s3_bucket_policy" {
+#   statement {
+#     actions = [
+#       "s3:GetObject",
+#     ]
+
+#     resources = [
+#       "arn:aws:s3:::${var.domain_name}/*",
+#     ]
+
+#     principals {
+#       type = "AWS"
+
+#       identifiers = [
+#         aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn,
+#       ]
+#     }
+#   }
+# }
+
 data "aws_iam_policy_document" "s3_bucket_policy" {
-  statement {
-    sid = "1"
+  depends_on = [ 
+    aws_cloudfront_distribution.s3_distribution,
+    aws_s3_bucket.s3_bucket]
 
-    actions = [
-      "s3:GetObject",
-    ]
+    statement {
+      sid = "s3_cloudfront_static_website"
+      effect = "Allow"
+      actions = ["s3:GetObject"]
+      principals {
+        identifiers = ["cloudfront.amazonaws.com"]
+        type = "Service"
+      }
 
-    resources = [
-      "arn:aws:s3:::${var.domain_name}/*",
-    ]
-
-    principals {
-      type = "AWS"
-
-      identifiers = [
-        aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn,
-      ]
+      resources = [ "arn:aws:s3:::${aws_s3_bucket.s3_bucket.bucket}/*"]
+      condition {
+        test = "StringEquals"
+        variable = "AWS:SourceArn"
+        values = [aws_cloudfront_distribution.s3_distribution.arn]
+      }
     }
-  }
 }
 
 resource "aws_s3_bucket_policy" "s3_bucket_policy" {
@@ -54,9 +75,17 @@ resource "aws_s3_bucket_website_configuration" "s3_bucket" {
 # -----------------------------------------------------
 # Cloudfront Distribution
 # -----------------------------------------------------
+resource "aws_cloudfront_origin_access_control" "s3_distribution" {
+  name = "security_pillar100_cf_s3_oac_2"
+  origin_access_control_origin_type = "s3"
+  signing_behavior = "always"
+  signing_protocol = "sigv4"
+}
+
 resource "aws_cloudfront_distribution" "s3_distribution" {
   depends_on = [
-    aws_s3_bucket.s3_bucket
+    aws_s3_bucket.s3_bucket,
+    aws_cloudfront_origin_access_control.s3_distribution
   ]
 
   origin {
