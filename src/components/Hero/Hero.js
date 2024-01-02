@@ -23,15 +23,15 @@ function Hero() {
       <HeroContainer>
         <HeroWrapper>
           <HeroLeft>
-            <h1>Hi, Guys</h1>
-            <h5>CCA Developers</h5>
+            <h1>Cloud-Powered Innovation</h1>
+            {/* <h5>Unleashing the Power of AWS at CCA Developers, Group No. 7</h5> */}
             <p>
-              We are group no 7
+            Unleashing the Power of AWS, with CCA Group No. 7
             </p>
           </HeroLeft>
           <HeroRight>
             <Image
-              src="https://raw.githubusercontent.com/gurupawar/website/main/src/Assets/man-svgrepo-com.svg"
+              src="https://upload.wikimedia.org/wikipedia/commons/5/5c/AWS_Simple_Icons_AWS_Cloud.svg"
               alt="man-svgrepo"
             />
           </HeroRight>
