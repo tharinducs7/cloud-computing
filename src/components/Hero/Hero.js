@@ -24,7 +24,7 @@ function Hero() {
         <HeroWrapper>
           <HeroLeft>
             <h1>Cloud-Powered Innovation</h1>
-            {/* <h5>Unleashing the Power of AWS at CCA Developers, Group No. 7</h5> */}
+            {/* <h5></h5> */}
             <p>
             Unleashing the Power of AWS, with CCA Group No. 7
             </p>
