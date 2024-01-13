@@ -23,7 +23,7 @@ function Hero() {
       <HeroContainer>
         <HeroWrapper>
           <HeroLeft>
-            <h1>Cloud-Powered Innovation</h1>
+            <h1>Cloud-Powered Innovation Demo</h1>
             {/* <h5></h5> */}
             <p>
             Unleashing the Power of AWS, with CCA Group No. 7
